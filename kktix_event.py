@@ -28,7 +28,6 @@ if tab_pane is not None:
                 event_title = class_element.find(class_="event-title").text.strip()
                 event_date = class_element.find(class_="date").text.strip()
                 status = class_element.find(class_="fake-btn pull-right").text.strip()
-                #description = class_element.find(class_="introduction").text.strip()
                 
                 # 輸出標題/日期/售票狀況
                 print("Event:", event_title)
