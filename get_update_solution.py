@@ -88,8 +88,7 @@ print("解決方法:", solution2)
 bot_token = 'YOUR_TOKEN'
 
 # 設定要發送訊息的chat_id
-#chat_id = '-865938305'
-chat_id = '-1001662148948'
+chat_id = 'YPUR_CHAT_ID'
 
 # 建立 Telegram Bot 物件
 bot = Bot(token=bot_token)
