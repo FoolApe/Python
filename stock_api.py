@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 import twstock
 
 app = Flask(__name__)
-
 def get_stock_info(stock_code):
     if ',' in stock_code:
         stock_codes = stock_code.split(',')
@@ -11,13 +10,15 @@ def get_stock_info(stock_code):
             stock = twstock.realtime.get(code.strip())
             success = stock.get('success', False)
             if success:
-                open_price = round(float(stock['realtime']['open']), 2)
+                deal_price = stock['realtime']['latest_trade_price']
+                if deal_price != '-':
+                    deal_price = round(float(deal_price), 2)
                 high_price = round(float(stock['realtime']['high']), 2)
                 low_price = round(float(stock['realtime']['low']), 2)
                 stock_name = stock['info']['name']
                 stock_data[code] = {
                     'stockName': stock_name,
-                    'openPrice': str(open_price),
+                    'dealPrice': str(deal_price) if deal_price != '-' else '-',
                     'highPrice': str(high_price),
                     'lowPrice': str(low_price)
                 }
